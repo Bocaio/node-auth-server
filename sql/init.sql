@@ -1,0 +1,12 @@
+CREATE DATABASE yourDb;
+
+USE yourDb;
+
+CREATE TABLE users (
+	id BIGINT PRIMARY KEY ,
+	username VARCHAR(30) NOT NULL,
+	email VARCHAR(50) NOT NULL UNIQUE ,
+	password_hash VARCHAR(255) , 
+	google_id VARCHAR(255) UNIQUE,
+	created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+);
