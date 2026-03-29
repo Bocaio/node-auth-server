@@ -31,9 +31,10 @@ async function main() {
   });
 
   process.on("SIGINT", async () => {
-    console.log("🛑 Shutting down gracefully...");
+    console.log("Shutting down gracefully...");
 
     try {
+      await redisClient.close();
       await pool.end();
       server.close(() => {
         console.log("💤 Server closed.");
