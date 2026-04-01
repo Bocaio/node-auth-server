@@ -1,8 +1,10 @@
-import { UserRepository } from "../repository/user.js";
+import { RefreshTokenRepository } from "../repository/redis/refresh-token.js";
+import { UserRepository } from "../repository/sql/user.js";
 import { UserService } from "../service/auth.js";
 
 const userRepository = new UserRepository();
-const userService = new UserService(userRepository);
+const refreshTokenRepository = new RefreshTokenRepository();
+const userService = new UserService(userRepository, refreshTokenRepository);
 
 export { userService }
 

@@ -11,6 +11,10 @@ router.post(`/create`, (req, res, next) => controller.create(req, res, next));
 
 router.post(`/login`, (req, res, next) => controller.login(req, res, next));
 
+router.post(`/refresh`, (req, res, next) => controller.refresh(req, res, next))
+
 router.post(`/google`, verifyCSRFToken, (req, res, next) => controller.google(req, res, next))
+
+
 
 export default router;

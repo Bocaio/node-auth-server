@@ -3,7 +3,7 @@ import mysql from "mysql2/promise";
 const pool = mysql.createPool({
   host: "localhost",
   user: "root",
-  database: "yourDbName",
+  database: "cineVibe",
   waitForConnections: true,
   connectionLimit: 10,
   maxIdle: 10,

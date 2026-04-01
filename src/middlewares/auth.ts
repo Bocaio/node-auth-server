@@ -7,7 +7,7 @@ import { CONFIGS } from "../config/index.js";
 function authMiddleware(req: Request, res: Response, next: NextFunction) {
     const accessToken = req.cookies.accessToken;
     if (!accessToken) {
-        throw new AppError(401, "You're not logged in"); // To Refactor
+        throw new AppError(401, "Unauthorized"); // To Refactor
     }
     try {
 

@@ -37,6 +37,24 @@ export const successHandler = (res: Response, data: any, type: any) => {
             });
             res.redirect("http://localhost:5173");
             break;
+
+        case "refresh":
+            res.cookie("accessToken", data.accessToken, {
+                httpOnly: true,
+                secure: isProducion,
+                sameSite: "strict",
+                maxAge: 15 * 60 * 1000,
+            });
+            res.cookie("refreshToken", data.refreshToken, {
+                httpOnly: true,
+                secure: isProducion,
+                sameSite: "strict",
+                maxAge: 7 * 24 * 60 * 60 * 1000,
+            });
+            res.status(200).send({ message: "Refresh successful", user: data.user });
+            break;
+
+
         case "health":
             res.status(200).send({ message: "Yeah! You exists", user: data })
             break;

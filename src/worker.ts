@@ -1,5 +1,5 @@
 
-import redisClient from "./queue/index.js";
+import redisClient from "./database/redis.js";
 import { emailConsumer } from "./worker-dependency-injection/email.js";
 
 async function main() {

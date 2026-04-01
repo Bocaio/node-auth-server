@@ -1,4 +1,4 @@
-import { MQRepositoryType, } from "../repository/redis.js";
+import { MQRepositoryType, } from "../repository/redis/mq.js";
 
 export abstract class BaseConsumer<T> {
     protected running: boolean;

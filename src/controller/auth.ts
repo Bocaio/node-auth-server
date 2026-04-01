@@ -39,6 +39,16 @@ class UserController {
             next(error)
         }
     }
+
+    refresh = async (req: Request, res: Response, next: NextFunction) => {
+        try {
+            const refreshToken = req.cookies.refreshToken;
+            const data = await this.userService.refresh(refreshToken)
+            successHandler(res, data, "refresh")
+        } catch (err) {
+            next(err)
+        }
+    }
 }
 
 export { UserController }

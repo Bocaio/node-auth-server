@@ -6,7 +6,7 @@ import authRoutes from "./routes/auth.js";
 import healthRoutes from "./routes/health.js"
 import errorMiddleWare from "./middlewares/error.js";
 import authMiddleware from "./middlewares/auth.js";
-import redisClient from "./queue/index.js";
+import redisClient from "./database/redis.js";
 
 const app = express();
 const port: string = "8080";

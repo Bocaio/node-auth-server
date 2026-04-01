@@ -1,4 +1,4 @@
-import { MQRepositoryType } from "../../repository/redis.js";
+import { MQRepositoryType } from "../../repository/redis/mq.js";
 import { EmailJob } from "../../types/job/index.js";
 
 export interface EmailProducerType {

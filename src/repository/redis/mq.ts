@@ -1,5 +1,6 @@
 import { RedisClientType } from "redis";
-import redisClient from "../queue/index.js";
+import redisClient from "../../database/redis.js";
+
 
 export interface MQRepositoryType {
     enqueue: (queueName: string, job: any) => Promise<void>;
