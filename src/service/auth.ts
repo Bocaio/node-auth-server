@@ -5,7 +5,7 @@ import { UserPayload } from "../types/JwtPayload.js";
 import { AppError } from "../types/AppError.js";
 import { CONFIGS } from "../config/index.js";
 import { OAuth2Client } from "google-auth-library";
-import { EmailServiceType } from "./email.js";
+import { v7 as uuidv7 } from "uuid";
 
 const client = new OAuth2Client();
 
@@ -23,9 +23,10 @@ class UserService {
 
     register = async (username: string, email: string, password: string) => {
         const passwordHash = await bcrypt.hash(password, 10);
-        const user = await this.userRepository.create(username, email, passwordHash);
+        const id = uuidv7()
+        const user = await this.userRepository.create(id, username, email, passwordHash);
         return {
-            id: user.insertId,
+            id,
             username,
             email,
         };
@@ -70,7 +71,8 @@ class UserService {
         }
         let user = await this.userRepository.getGoogleUser(googleId);
         if (!user) {
-            await this.userRepository.createGoogleUser(name, email, googleId);
+            const id = uuidv7()
+            await this.userRepository.createGoogleUser(id, name, email, googleId);
             user = await this.userRepository.getGoogleUser(googleId);
         }
         const jwtKey = CONFIGS.JWT_SECRET_KEY;

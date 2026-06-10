@@ -27,7 +27,8 @@
     "mysql2": "^3.17.0",
     "nodemailer": "^8.0.3",
     "redis": "^5.11.0",
-    "url": "^0.11.4"
+    "url": "^0.11.4",
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@tsconfig/node22": "^22.0.2",

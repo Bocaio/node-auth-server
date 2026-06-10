@@ -2,16 +2,16 @@ import pool from "../database/index.js";
 import { RowDataPacket } from "mysql2";
 
 interface UserRepositoryType {
-    create: (username: string, email: string, passwordHash: string) => Promise<any>
+    create: (id: string, username: string, email: string, passwordHash: string) => Promise<any>
     get: (email: string) => Promise<any>
-    createGoogleUser: (username: string, email: string, googleId: string) => Promise<any>;
+    createGoogleUser: (id: string, username: string, email: string, googleId: string) => Promise<any>;
     getGoogleUser: (googleId: string) => Promise<any>;
 }
 
 class UserRepository {
-    create = async (username: string, email: string, passwordHash: string) => {
-        const query = `INSERT INTO users (name, email, password_hash) VALUES (?, ?, ?)`;
-        const [rows] = await pool.execute(query, [username, email, passwordHash]);
+    create = async (id: string, username: string, email: string, passwordHash: string) => {
+        const query = `INSERT INTO users (id,name, email, password_hash) VALUES (?, ?, ?,?)`;
+        const [rows] = await pool.execute(query, [id, username, email, passwordHash]);
         return rows;
     }
     get = async (email: string) => {
@@ -20,9 +20,9 @@ class UserRepository {
         const user = rows[0];
         return user ?? null;
     }
-    createGoogleUser = async (username: string, email: string, googleId: string) => {
-        const query = `INSERT INTO users (name, email, google_id ,auth_provider) VALUES (?, ?, ?,"google")`;
-        const [rows] = await pool.execute(query, [username, email, googleId]);
+    createGoogleUser = async (id: string, username: string, email: string, googleId: string) => {
+        const query = `INSERT INTO users (id,name, email, google_id ,auth_provider) VALUES (?,?, ?, ?,"google")`;
+        const [rows] = await pool.execute(query, [id, username, email, googleId]);
         return rows;
     }
     getGoogleUser = async (googleId: string) => {
