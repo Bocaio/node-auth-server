@@ -1,0 +1,58 @@
+{
+  "name": "auth-boilerplate",
+  "version": "1.0.0",
+  "description": "A production-ready authentication boilerplate for Node.js — Express 5 + TypeScript + MySQL (Kysely) + Redis with JWT, Google OAuth, email OTP verification, and password reset.",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx --watch src/index.ts",
+    "dev:worker": "tsx --watch src/worker.ts",
+    "start": "node dist/index.js",
+    "start:worker": "node dist/worker.js",
+    "build": "tsc",
+    "migrate:up": "tsx src/database/migrator.ts up",
+    "migrate:latest": "tsx src/database/migrator.ts latest",
+    "migrate:down": "tsx src/database/migrator.ts down",
+    "migrate:create": "tsx src/database/migrator.ts create"
+  },
+  "keywords": [
+    "authentication",
+    "boilerplate",
+    "express",
+    "typescript",
+    "jwt",
+    "google-oauth",
+    "mysql",
+    "kysely",
+    "redis"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.1.0",
+    "google-auth-library": "^10.6.1",
+    "jsonwebtoken": "^9.0.3",
+    "kysely": "^0.29.2",
+    "mysql2": "^3.17.0",
+    "nodemailer": "^8.0.3",
+    "redis": "^5.11.0",
+    "uuid": "^14.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@tsconfig/node22": "^22.0.2",
+    "@types/bcrypt": "^6.0.0",
+    "@types/cookie-parser": "^1.4.10",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^22.19.11",
+    "@types/nodemailer": "^7.0.11",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
